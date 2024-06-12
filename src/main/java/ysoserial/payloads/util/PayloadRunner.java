@@ -1,5 +1,6 @@
 package ysoserial.payloads.util;
 
+import java.util.Base64;
 import java.util.concurrent.Callable;
 
 import ysoserial.Deserializer;
@@ -29,6 +30,7 @@ public class PayloadRunner {
 
 				System.out.println("serializing payload");
 				byte[] ser = Serializer.serialize(objBefore);
+                System.out.println(Base64.getEncoder().encodeToString(ser));
 				Utils.releasePayload(payload, objBefore);
                 return ser;
 		}});

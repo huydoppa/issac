@@ -22,8 +22,8 @@
 				<version>3.5.1</version>
 				<configuration>
 					<!-- maximize compatibility -->
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>8</source>
+					<target>8</target>
 					<!-- ignore noisy internal api warnings -->
 					<compilerArgument>-XDignore.symbol.file</compilerArgument>
 					<fork>true</fork>
@@ -179,6 +179,11 @@
 			<artifactId>xnio-nio</artifactId>
 			<version>3.3.4.Final</version>
 		</dependency>
+        <dependency>
+            <groupId>com.oracle.coherence.ce</groupId>
+            <artifactId>coherence</artifactId>
+            <version>14.1.1-0-3</version>
+        </dependency>
 		<dependency>
 			<groupId>org.jboss.sasl</groupId>
 			<artifactId>jboss-sasl</artifactId>
@@ -189,6 +194,7 @@
 			<artifactId>remoting-jmx</artifactId>
 			<version>2.0.1.Final</version>
 		</dependency>
+
 
 		<!-- gadget dependecies -->
 
