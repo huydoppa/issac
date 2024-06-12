@@ -23,8 +23,8 @@ jobs:
         run: mvn versions:set -DnewVersion=${{ github.ref_name }}
       - name: Build jar
         run: mvn -B clean package -DskipTests
-        # - name: publish maven jar
-        #   run: mvn -B deploy -DskipTests -DrepositoryId=github
+      - name: publish maven jar
+        run: mvn -B deploy -DskipTests -DrepositoryId=github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
