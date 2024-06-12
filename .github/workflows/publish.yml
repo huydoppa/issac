@@ -1,8 +1,6 @@
 name: publish jar
 on:
   push:
-    tags:
-      - "v*.*.*"
 permissions:
   contents: write
 
